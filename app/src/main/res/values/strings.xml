@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">QRScanner</string>
+    <string name="app_name">QR Code 掃描</string>
+    <string name="scanner">掃描</string>
+    <string name="re_scanner">重新掃描</string>
 </resources>

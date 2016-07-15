@@ -1,13 +1,13 @@
 package com.ewebs.qrscanner;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -39,9 +39,9 @@ public class BarcodeScanner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.barcode_scanner);
-
         initControls();
     }
+
 
     private void initControls() {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -132,7 +132,14 @@ public class BarcodeScanner extends AppCompatActivity {
 
                     String scanResult = sym.getData().trim();
 
-                    showAlertDialog(scanResult);
+                    /**偵測到QR Code顯示提示視窗*/
+                    //showAlertDialog(scanResult);
+                    Intent intent = new Intent();
+                    intent.setClass(BarcodeScanner.this, BrowserActivity.class);
+                    intent.putExtra("URL",scanResult);
+                    startActivity(intent);
+                    releaseCamera();
+                    finish();
 
                   /*  Toast.makeText(BarcodeScanner.this, scanResult,
                             Toast.LENGTH_SHORT).show();*/

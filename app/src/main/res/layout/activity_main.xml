@@ -6,12 +6,22 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"/>
 
     <Button
         android:id="@+id/scannerButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#4DB6AC"
+        android:text="@string/scanner"
+        android:textColor="#ffffff"
         android:layout_centerVertical="true"
-        android:text="掃描" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

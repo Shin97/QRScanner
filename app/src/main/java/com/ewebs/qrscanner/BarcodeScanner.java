@@ -25,7 +25,7 @@ public class BarcodeScanner extends AppCompatActivity {
     private CameraPreview mPreview;
     private Handler autoFocusHandler;
 
-    private Button scanButton;
+//    private Button scanButton;
     private ImageScanner scanner;
 
     private boolean barcodeScanned = false;
@@ -59,19 +59,19 @@ public class BarcodeScanner extends AppCompatActivity {
         FrameLayout preview = (FrameLayout) findViewById(R.id.cameraPreview);
         preview.addView(mPreview);
 
-        scanButton = (Button) findViewById(R.id.ScanButton);
+//        scanButton = (Button) findViewById(R.id.ScanButton);
+//        scanButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                if (barcodeScanned) {
+//                    barcodeScanned = false;
+//                    mCamera.setPreviewCallback(previewCb);
+//                    mCamera.startPreview();
+//                    previewing = true;
+//                    mCamera.autoFocus(autoFocusCB);
+//                }
+//            }
+//        });
 
-        scanButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (barcodeScanned) {
-                    barcodeScanned = false;
-                    mCamera.setPreviewCallback(previewCb);
-                    mCamera.startPreview();
-                    previewing = true;
-                    mCamera.autoFocus(autoFocusCB);
-                }
-            }
-        });
     }
 
 
@@ -136,10 +136,14 @@ public class BarcodeScanner extends AppCompatActivity {
                     //showAlertDialog(scanResult);
                     Intent intent = new Intent();
                     intent.setClass(BarcodeScanner.this, BrowserActivity.class);
-                    intent.putExtra("URL",scanResult);
-                    startActivity(intent);
-                    releaseCamera();
-                    finish();
+                    if(scanResult.substring(0,4).toLowerCase().equals("http")) {
+                        intent.putExtra("URL", scanResult);
+                        startActivity(intent);
+                        releaseCamera();
+                        finish();
+                    }else{
+                        showAlertDialog(scanResult);
+                    }
 
                   /*  Toast.makeText(BarcodeScanner.this, scanResult,
                             Toast.LENGTH_SHORT).show();*/
@@ -168,7 +172,13 @@ public class BarcodeScanner extends AppCompatActivity {
                 .setMessage(message)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
+                        if (barcodeScanned) {
+                            barcodeScanned = false;
+                            mCamera.setPreviewCallback(previewCb);
+                            mCamera.startPreview();
+                            previewing = true;
+                            mCamera.autoFocus(autoFocusCB);
+                        }
                     }
                 })
                 .show();

@@ -15,4 +15,13 @@
         android:layout_height="wrap_content"
         android:textColor="#ffffff"/>
 
+    <Button
+        android:id="@+id/scannerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#4DB6AC"
+        android:text="@string/scanner"
+        android:textColor="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

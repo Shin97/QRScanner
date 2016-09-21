@@ -2,4 +2,13 @@
     <string name="app_name">QR Code 掃描</string>
     <string name="scanner">掃描</string>
     <string name="re_scanner">重新掃描</string>
+    <string name="prompt_password">密碼</string>
+    <string name="prompt_phone">手機號碼</string>
+    <string name="error_incorrect_password">密碼錯誤</string>
+    <string name="error_field_required">此欄位必須輸入</string>
+    <string name="action_sign_in_short">登入中</string>
+    <string name="action_sign_in">登入</string>
+    <string name="error_invalid_phone">錯誤的帳號</string>
+    <string name="error_invalid_password">此密碼太短</string>
+    <string name="error_network">連線問題</string>
 </resources>

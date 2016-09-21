@@ -23,23 +23,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        if(isConnected())
-            scanner();
+        if(isConnected()) {
+            //scanner();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
         else
             textView.setText("網路未連線!!\n請開啟網路後再繼續");
     }
 
-
-    @OnClick(R.id.scannerButton)
-    public void onClick(View v) {
-        if(isConnected())
-            scanner();
-    }
-
-    private void scanner(){
-        Intent intent = new Intent(this, BarcodeScanner.class);
-        startActivity(intent);
-    }
 
     private boolean isConnected(){
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
